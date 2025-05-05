@@ -1,0 +1,31 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  background-color: #020202;
+  color: white;
+  font-family: "vtf-centerline";
+  user-select: none;
+}
+
+.page-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+@font-face {
+  font-family: "vtf-centerline";
+  src: url("./typefesse-master/Fonts/1-otf/Typefesse_Claire-Obscure.otf")
+      format("woff2"),
+    url("./typefesse-master/Fonts/1-otf/Typefesse_Claire-Obscure.otf")
+      format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}
+
+.clock {
+  font-size: 18vw;
+}
