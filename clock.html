@@ -20,15 +20,10 @@
         const minutes = now.getMinutes().toString().padStart(2, "0");
         const seconds = now.getSeconds().toString().padStart(2, "0");
 
-        document.getElementById(
-          "time"
-        ).innerHTML = `${hours}:${minutes}:${seconds}`;
+        document.getElementById("time").textContent = `${hours}:${minutes}:${seconds}`;
       }
 
-      // Actualisez l'heure toutes les secondes
       setInterval(updateTime, 1000);
-
-      // Appelez updateTime pour la première mise à jour immédiate
       updateTime();
     </script>
   </body>
