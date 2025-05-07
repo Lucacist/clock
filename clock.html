@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Luca.ffz: Horloge</title>
     <link rel="stylesheet" href="./clock.css" />
+    <style>
+      .cursor-hidden {
+        cursor: none;
+      }
+    </style>
   </head>
   <body>
     <div class="page-center">
@@ -22,6 +27,40 @@
 
         document.getElementById("time").textContent = `${hours}:${minutes}:${seconds}`;
       }
+
+      // Variables pour gérer l'inactivité du curseur
+      let cursorTimeout;
+      let isCursorHidden = false;
+      
+      // Fonction pour masquer le curseur
+      function hideCursor() {
+        document.body.classList.add('cursor-hidden');
+        isCursorHidden = true;
+      }
+      
+      // Fonction pour afficher le curseur
+      function showCursor() {
+        document.body.classList.remove('cursor-hidden');
+        isCursorHidden = false;
+        
+        // Réinitialiser le minuteur
+        clearTimeout(cursorTimeout);
+        cursorTimeout = setTimeout(hideCursor, 2000);
+      }
+      
+      // Détecter le mouvement de la souris
+      document.addEventListener('mousemove', function() {
+        if (isCursorHidden) {
+          showCursor();
+        } else {
+          // Réinitialiser le minuteur
+          clearTimeout(cursorTimeout);
+          cursorTimeout = setTimeout(hideCursor, 2000);
+        }
+      });
+      
+      // Initialiser le minuteur
+      cursorTimeout = setTimeout(hideCursor, 2000);
 
       setInterval(updateTime, 1000);
       updateTime();
